@@ -39,12 +39,11 @@ class _LoanFormState extends State<LoanForm> {
         int tempPeriod = int.parse(result['loanPeriod'].toString());
 
         if (tempAmount <= _loanAmount || tempPeriod > _loanPeriod) {
-          _loanAmountResult = int.parse(result['loanAmount'].toString());
           _loanPeriodResult = int.parse(result['loanPeriod'].toString());
         } else {
-          _loanAmountResult = _loanAmount;
           _loanPeriodResult = _loanPeriod;
         }
+        _loanAmountResult = int.parse(result['loanAmount'].toString());
         _errorMessage = result['errorMessage'].toString();
       });
     } else {
@@ -133,7 +132,7 @@ class _LoanFormState extends State<LoanForm> {
                   Slider.adaptive(
                     value: _loanPeriod.toDouble(),
                     min: 12,
-                    max: 60,
+                    max: 48,
                     divisions: 40,
                     label: '$_loanPeriod months',
                     activeColor: AppColors.secondaryColor,
@@ -160,7 +159,7 @@ class _LoanFormState extends State<LoanForm> {
                           padding: EdgeInsets.only(right: 12),
                           child: Align(
                             alignment: Alignment.centerRight,
-                            child: Text('60 months'),
+                            child: Text('48 months'),
                           ),
                         ),
                       )
